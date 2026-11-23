@@ -1,0 +1,11 @@
+# The World Today — 22 November 2026 in one image
+
+One front page that sums up Sunday, 22 November 2026. The hero story: the COP31 climate summit in Antalya collapses with no deal after two days of overtime, as the EU and others reject a draft that makes no mention of fossil fuels — the longest climate summit on record. Beside it: a suspected Ukrainian sea drone hits the Russian warship Merkury at Benghazi, Libya, and a second, Maltese-flagged ship is also struck; Democrats secure at least 258 US House seats, their largest majority since 1992, after a North Carolina recount; global stocks fall as the AI sell-off deepens, with the S&P 500 down 3.7% and Japan's Nikkei down 5.06%; and the European-Japanese BepiColombo probe enters orbit around Mercury, only the second spacecraft ever to do so. The ticker along the bottom carries the rest of the day in brief: Mexico captures cartel boss "El Chapo Isidro" in a Sinaloa raid that leaves 11 dead, a candy factory fire in Indonesia kills 3 with dozens missing, two tankers are hit near the Strait of Hormuz, a Russian drone hits an apartment block in Dymer with 14 missing, and Poland confirms the missiles that fell on its soil were Russian Kh-101s.
+
+## How it was made
+
+`entry.png` (1024×1024) is composed entirely by `build_image.py` (Python + Pillow): every graphic — the cracked globe for COP31, the warship at Benghazi, the US Capitol dome with 258, the falling market chart and BepiColombo at Mercury — is drawn with shapes in a navy/crimson/cream front-page layout; re-run `python3 build_image.py` to rebuild it. `main.ts` is the grader entry point: it copies `entry.png` into `$MAKEFUN_OUTPUT_DIR`.
+
+[![make.fun · news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![rank](https://make.fun/badge/news-image-20261122/navaz7/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![reward](https://make.fun/badge/news-image-20261122/navaz7/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
