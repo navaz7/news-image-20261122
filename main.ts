@@ -1,18 +1,26 @@
-// Entry point for the make.fun grader.
-//
-// The judged image is entry.png, which sits in this repository next to
-// this file. The grader runs this program offline with no arguments;
-// all it has to do is place a copy of that image at
-// $MAKEFUN_OUTPUT_DIR/entry.png (falling back to /output when the
-// variable is not set). Only the Node standard library is used.
-import { copyFileSync, mkdirSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+/**
+ * The World Today - 22 November 2026: entrypoint for the front-page image.
+ *
+ * The drawing itself lives in main.py (Pillow). This file runs that
+ * generator with the output directory the harness provides, so the entry
+ * works whichever entrypoint the grader picks.
+ */
+import { execFileSync } from "node:child_process";
+import { existsSync, mkdirSync } from "node:fs";
+import { join } from "node:path";
 
-const repoDir = dirname(fileURLToPath(import.meta.url));
-const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+if (!existsSync(outDir)) {
+  mkdirSync(outDir, { recursive: true });
+}
 
-mkdirSync(outputDir, { recursive: true });
-const target = join(outputDir, "entry.png");
-copyFileSync(join(repoDir, "entry.png"), target);
+execFileSync("python3", ["main.py"], {
+  stdio: "inherit",
+  env: { ...process.env, MAKEFUN_OUTPUT_DIR: outDir },
+});
+
+const target = join(outDir, "entry.png");
+if (!existsSync(target)) {
+  throw new Error(`generator did not write ${target}`);
+}
 console.log(`wrote ${target}`);
